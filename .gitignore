@@ -1,0 +1,15 @@
+# マークダウンドキュメント（メモ・レポート類）
+*.md
+!README.md
+
+# UTAGE用ファイル（デモサイトには不要）
+UTAGE用_セクション別/
+UTAGE用_統合版.html
+
+# macOS
+.DS_Store
+
+# エディタ
+.vscode/
+.idea/
+
