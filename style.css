@@ -71,7 +71,7 @@ section {
     max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
-    overflow-x: hidden;
+    overflow: visible;
 }
 
 @media (min-width: 768px) {
@@ -1583,6 +1583,7 @@ section {
 .voice-section {
     padding: 80px 0;
     background: linear-gradient(135deg, var(--bg-pink-light) 0%, #FFF 100%);
+    overflow: visible;
 }
 
 .voice-grid {
@@ -1590,6 +1591,7 @@ section {
     grid-template-columns: 1fr;
     gap: 40px;
     margin-top: 40px;
+    overflow: visible;
 }
 
 @media (min-width: 768px) {
@@ -1605,6 +1607,7 @@ section {
     padding: 25px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     transition: transform 0.3s, box-shadow 0.3s;
+    overflow: visible;
 }
 
 .voice-item:hover {
@@ -2122,26 +2125,76 @@ section {
     }
 }
 
+/* ========================================
+   プログラム概要セクション
+======================================== */
+.program-overview {
+    background: linear-gradient(180deg, var(--bg-pink-light) 0%, #FFFFFF 100%);
+    padding: 80px 0;
+}
+
+@media (max-width: 767px) {
+    .program-overview {
+        padding: 60px 0;
+    }
+}
+
 .benefit-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     margin-top: 30px;
+    overflow: visible;
+    padding-bottom: 20px;
 }
 
 .benefit-card {
-    background: linear-gradient(135deg, #FFF5F8 0%, #FFE8F0 100%);
-    padding: 30px;
-    border-radius: 16px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 245, 248, 0.9) 100%
+    );
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    padding: 35px;
+    border-radius: 24px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(212, 118, 155, 0.15);
-    border: 3px solid var(--main-pink);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 
+        0 8px 32px rgba(212, 118, 155, 0.12),
+        0 2px 8px rgba(255, 255, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        inset 0 -1px 0 rgba(212, 118, 155, 0.08);
+    border: 2px solid rgba(212, 118, 155, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: visible;
+}
+
+/* ガラス反射エフェクト */
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.7) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    border-radius: 24px 24px 0 0;
+    pointer-events: none;
 }
 
 .benefit-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(212, 118, 155, 0.3);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 12px 40px rgba(212, 118, 155, 0.2),
+        0 4px 12px rgba(255, 255, 255, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        inset 0 -1px 0 rgba(212, 118, 155, 0.12);
+    border-color: rgba(212, 118, 155, 0.35);
 }
 
 .benefit-icon {
@@ -2683,20 +2736,58 @@ section {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
 }
 
 .line-support-steps li {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 14px 16px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 250, 252, 0.9) 100%
+    );
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border-radius: 16px;
+    padding: 18px 20px;
     font-size: 16px;
-    color: #444;
-    box-shadow: inset 0 0 0 2px rgba(212, 118, 155, 0.2);
+    color: var(--text-dark);
+    box-shadow: 
+        0 4px 16px rgba(212, 118, 155, 0.1),
+        0 1px 4px rgba(255, 255, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1.5px solid rgba(212, 118, 155, 0.15);
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ガラス光沢 */
+.line-support-steps li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+}
+
+.line-support-steps li:hover {
+    transform: translateX(4px);
+    box-shadow: 
+        0 6px 20px rgba(212, 118, 155, 0.15),
+        0 2px 6px rgba(255, 255, 255, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(212, 118, 155, 0.25);
 }
 
 .line-support-steps span {
@@ -2707,8 +2798,12 @@ section {
     color: #fff;
     font-weight: 900;
     border-radius: 999px;
-    padding: 4px 12px;
-    font-size: 13px;
+    padding: 6px 14px;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(212, 118, 155, 0.3);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .line-support-checklist {
